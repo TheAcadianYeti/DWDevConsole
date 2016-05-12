@@ -7,10 +7,10 @@
 	{
 		this.checkUp = {};
 		this.comment="";
-		this.updateCheck = function(checkIn, testing)//This is what we assign values to
+		this.updateCheck = function(checkIn, user)//This is what we assign values to
 		{
 			//Never overrite just modify existing values!  Doesnt like it 
-				checkIn.user = "Herb";
+				checkIn.user = user;
 				var date = formatDate(Date.now());
 				checkIn.time = date;
 				checkIn.comments = [];
@@ -18,10 +18,11 @@
 				this.checkUp = {};
 		};
 		
-		this.addComment = function(checkIn)
+		this.addComment = function(checkIn, user)
 		{
 				checkIn.comments.push({
 				text: this.comment,
+				user: user,
 				time: formatDate(Date.now()),
 				});
 				this.comment="";

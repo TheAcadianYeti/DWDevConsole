@@ -18,12 +18,36 @@
 			controller: function()
 			{
 				_self = this;
+				this.loggedIn = false;
+				this.user = "Anon";
 				this.lastCheckIn = {
 					user: "N/A",
 					status: "No updates yet!",
 					time: "N/A",
 					comments: [],	
 				};
+				
+				this.authenticate = function(userName, pass)
+				{
+					//Any one can log in at the moment
+					//if(userName === "pwilliams")
+					//{
+						//if(pass === "dl546d")
+						//{
+							this.loggedIn = true;
+							this.user = userName;
+							userName = "";
+							pass="";
+						//}
+					//}
+				}
+				
+				this.signOut = function()
+				{
+					this.user = "Anon";
+					this.loggedIn = false;
+				}
+				
 				
 				//Posts a comment
 				this.postComment = function()

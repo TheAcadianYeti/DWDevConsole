@@ -5,10 +5,19 @@
 }
 
 .log-in-section {
-	background-color: cadetblue;
+	background-color: #99ceff;
 	width: 200px;
-	height: 220px;
+	height: 260px;
 	border: 3px ridge dimgrey;
+	text-align: center;
+	border-radius: 25px;
+}
+
+.logged-in {
+	background-color: #99ceff;
+	width: 175px;
+	height: 170px;
+	border: 3px ridge dimgray;
 	text-align: center;
 	border-radius: 25px;
 }
@@ -18,5 +27,7 @@
 }
 
 .profile-img {
+	border-radius: 50%;
 	padding-top: 10px;
+	padding-bottom: 10px;
 }
