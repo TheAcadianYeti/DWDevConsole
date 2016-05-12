@@ -1,0 +1,13 @@
+<!--This is where we would have all the info available for our server-->
+<div class="container">
+	<div class="jumbotron">
+
+		<div class="row text-center" ng-init="server.testConnection('http://')">
+			<div class="col-md-4 col-md-pull-1"><strong>Server Status</strong></div>
+			<p class="{{server.isUp() ? 'col-md-4 col-md-pull-2 bg-success' : 'col-md-4 col-md-pull-2 bg-danger'}}" id="serverStatus">
+				{{server.getStatus()}}
+			<!--Important!!!!!! Make sure to use a method here instead of just saying {{server.status}} to access the variable directly because it will not update itself when the variable changes if you do it like that-->
+			</p>
+		</div>
+	</div>
+</div>
