@@ -1,42 +1,56 @@
+<!--Working on the log in panel-->
+<div class="fixed-div">
+	<form class="form-signin log-in-section container">
+		<img class="profile-img" ng-src="Images/hamster_1.jpg"/>
+		<div>
+			<h4 class="form-signin-heading">Please sign in</h4>
+			<label for="inputEmail" class="sr-only">Username...</label>
+			<input type="text" id="inputUser" class="form-control" placeholder="Username..." ng-model="parking.user" autofocus>
+			<label for="inputPass" class="sr-only">Password</label>
+			<input type="password" id="inputPass" class="form-control" placeholder="Password"></label>
+			<button class="btn btn-sm btn-primary btn-block" type="submit">Sign in</button>
+		</div>
+	</form>
+</div>
 
 <section class="container" ng-controller="FormController as checkCtrl" ng-init="parking.init()">
-<div class="text-center">
-	<h2>
-	Last marking was <div class="text-danger inline">{{parking.lastCheckIn.time}}</div>
-	<cite class="clearfix"><i>{{parking.lastCheckIn.status}}</i></cite>
-	</h2>
-</div>
-<div class="container">
-	<ul>
-		<li ng-repeat="comment in parking.lastCheckIn.comments" class="bg-info">
-			<blockquote>
-				{{comment.text}}
-				<cite class="clearfix"><strong>@ {{comment.time}}</strong></cite>
-			</blockquote>
-		</li>
-	</ul>
-</div>
+	<div class="text-center">
+		<h2>
+		Last marking was <div class="text-danger inline">{{parking.lastCheckIn.time}}</div>
+		<cite class="clearfix"><i>{{parking.lastCheckIn.status}}</i></cite>
+		</h2>
+	</div>
+	<div class="container">
+		<ul>
+			<li ng-repeat="comment in parking.lastCheckIn.comments" class="bg-info">
+				<blockquote>
+					{{comment.text}}
+					<cite class="clearfix"><strong>@ {{comment.time}}</strong></cite>
+				</blockquote>
+			</li>
+		</ul>
+	</div>
+	
+	
+		<div class="page-header"><h2>Comment</h2></div>
+		<form name="reviewForm"" ng-submit="checkCtrl.addComment(parking.lastCheckIn); parking.postComment()">
+			<fieldset class="form-group">
+				<textarea ng-model="checkCtrl.comment" class="form-control" placeholder="Enter a comment if you'd like..." title="Comment"></textarea>
+			</fieldset>	
+			<fieldset class="form-group">
+				<input type="submit" class="btn btn-primary pull-right" value="Submit Comment"/>
+			</fieldset>
+		</form>
 
 
-	<div class="page-header"><h2>Comment</h2></div>
-	<form name="reviewForm"" ng-submit="checkCtrl.addComment(parking.lastCheckIn)">
-		<fieldset class="form-group">
-			<textarea ng-model="checkCtrl.comment" class="form-control" placeholder="Enter a comment if you'd like..." title="Comment"></textarea>
-		</fieldset>	
-		<fieldset class="form-group">
-			<input type="submit" class="btn btn-primary pull-right" value="Submit Comment"/>
-		</fieldset>
-	</form>
-
-
-	<div class="page-header"><h2>Check-in</h2></div>
-	<form name="reviewForm"" ng-submit="checkCtrl.updateCheck(parking.lastCheckIn); parking.postUpdate()">
-		<h4>Hi {{parking.lastCheckIn.user}}</h4>
-		<fieldset class="form-group">
-			<textarea ng-model="checkCtrl.checkUp.status" class="form-control" placeholder="Have something to add?" title="Comment"></textarea>
-		</fieldset>	
-		<fieldset class="form-group">
-			<input type="submit" class="btn btn-primary pull-right" value="Submit Check-In"/>
-		</fieldset>
-	</form>
-</section>
+		<div class="page-header"><h2>Check-in</h2></div>
+		<form name="reviewForm"" ng-submit="checkCtrl.updateCheck(parking.lastCheckIn); parking.postUpdate()">
+			<h4>Hi {{parking.lastCheckIn.user}}</h4>
+			<fieldset class="form-group">
+				<textarea ng-model="checkCtrl.checkUp.status" class="form-control" placeholder="Have something to add?" title="Comment"></textarea>
+			</fieldset>	
+			<fieldset class="form-group">
+				<input type="submit" class="btn btn-primary pull-right" value="Submit Check-In"/>
+			</fieldset>
+		</form>
+</section>	
