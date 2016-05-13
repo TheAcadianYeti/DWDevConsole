@@ -1,6 +1,7 @@
 (function ()
 {
-	var app = angular.module('dw-dev', ['search-app','server-widget', 'parking-widget']);
+	var app = angular.module('dw-dev', ['server-widget', 'parking-widget', 'search-app']);//Import this to make things purty
+
 	
 	
 	app.controller('FormController', function()
