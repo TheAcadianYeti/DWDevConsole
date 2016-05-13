@@ -14,30 +14,34 @@
     // Controller for a few different aspects of submitting the search data and controlling what is searched
     //-------------------------------------------------------------------------------------------------------------
 
-    app.controller('searchController',['serviceForSearch','$scope', "$http", function(serviceForSearch, $scope, $http)
+    app.controller('searchController',['$scope', "$http", function($scope, $http)
     {
         $scope.googleSelected = false;
         $scope.devWikiSelected = false;
+        $scope.parkingOMaticSelected = false;
         $scope.chosenUrl = "http://google.ca";
         $scope.searchData = "";
-        $scope.serviceForSearch = serviceForSearch;
-        $scope.founcSearchData = "";
+        $scope.foundSearchData = [];
         $scope.searchOptions =
         {
             validOptions:
-                [{id: 1, name: 'Google'},
-                {id: 2, name: 'Dev Wiki'},
-                {id: 3, name: 'Where would you like to search'}],
-            chosenOption: {id: 3, name: 'Where would you like to search'},
-            searchData: 'The internet is your oyster.... Search'
+                [
+                    {id: 1, name: 'Parking-O-Matic!'},
+                    {id: 2, name: 'Dev Wiki'},
+                    {id: 3, name: 'Google'},
+                    {id: 4, name: 'Where would you like to search today ?'}
+                ],
+            chosenOption: {id: 4, name: 'Where would you like to search today ?'},
+            searchData: ''
         };
 
         $scope.googleData = "";
         $scope.devWikiData = "";
+        $scope.parkingOMaticData = "";
 
         //---------------------------------------------------------------------------------------------------------
         // Variable containing useful things we will be using with our search widget
-        // *****data inside will probably be going into a json file*****
+        // *****data inside should be in a json file*****
         //---------------------------------------------------------------------------------------------------------
 
 
@@ -46,6 +50,7 @@
         {
             google: 'https://www.google.ca/?ion=1&espv=2#q=',
             devWiki: 'https://confluence.deltaware.com/display/DW/Dev+WIKI+Home/',
+            parkingOMatic: '/JSON/check.json',
             url: $scope.chosenUrl
 
         };
@@ -62,6 +67,7 @@
                 {
                     $scope.googleSelected = true;
                     $scope.devwikiSelected = false;
+                    $scope.parkingOMaticSelected = false;
                     $scope.chosenUrl = $scope.widget.google;
                     processUrl($scope.chosenUrl);
 
@@ -71,38 +77,52 @@
                 {
                     $scope.devwikiSelected = true;
                     $scope.googleSelected = false;
+                    $scope.parkingOMaticSelected = false;
                     $scope.chosenUrl = $scope.widget.devWiki;
-                    processUrl($scope.chosenUrl)
+                    processUrl($scope.chosenUrl);
 
+                }
+                    break;
+                case 'Parking-O-Matic!':
+                {
+                    $scope.parkingOMaticSelected = true;
+                    $scope.googleSelected = false;
+                    $scope.devWikiSelected = false;
+                    $scope.chosenUrl = $scope.widget.parkingOMatic;
+                    processUrl($scope.chosenUrl);
                 }
                     break;
                 default:
                 {
+                    $scope.parkingOMaticSelected = true;
                     $scope.googleSelected = false;
                     $scope.devWikiSelected = false;
+                    $scope.chosenUrl = $scope.widget.parkingOMatic;
+                    processUrl($scope.chosenUrl);
                 }
                     break;
             }
         };
 
+        //---------------------------------------------------------------------------------------------------------
+        // This function sends an http get request to get the search data and it is put into out service for search
+        // variable from our factory
+        //---------------------------------------------------------------------------------------------------------
+
         function processUrl(chosenUrl)
         {
-            for(var data in $scope.searchData.split(' '))
+            //for(var data in $scope.searchData.split(' '))
+           //{
+                //$scope.chosenUrl += data + "+";
+            //}
+            $http.get($scope.chosenUrl).success(function(response)
             {
-                $scope.chosenUrl += data + "+";
-            }
-            $scope.chosenUrl = $scope.chosenUrl.substring(0,$scope.chosenUrl.length-2);
-            alert(chosenUrl);
-            $http.get(chosenUrl).success(function(response)
-            {
-                serviceForSearch.results = response;
+                $scope.foundSearchData = response.lastCheckIn;
             }).error(function(err)
             {
                 alert("Error!" + err);
             });
-
         }
-
     }]);
 
     //---------------------------------------------------------------------------------------------------------
@@ -114,17 +134,27 @@
         return{
             restrict: 'E',
             controller: 'searchController',
-            templateUrl: 'search-app.html'}
+            templateUrl: 'HTML/search-app.html'}
     });
 
-    //---------------------------------------------------------------------------------------------------------
-    // Custom factory used for search data
-    //---------------------------------------------------------------------------------------------------------
-
-    app.factory('serviceForSearch', function ()
+    app.filter('customSearch', function()
     {
-        var serviceForSearch = {};
-        serviceForSearch.results = [];
-        return serviceForSearch;
+        return function(someArray, searchString)
+        {
+            if(!searchString)
+            {
+                return someArray;
+            }
+            var foundData = [];
+            searchString.toLowerCase();
+            angular.forEach(someArray, function (dataItem) {
+                if(dataItem.toLowerCase().indexOf(searchString) !== -1)
+                {
+                    result.push(dataItem);
+                }
+                return result;
+            });
+        }
     });
-})();
+});
+

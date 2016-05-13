@@ -2,7 +2,7 @@
 	"lastCheckIn":{
 		"time": "2016-5-11 16:43:46",
 		"status": "It's a miracle!!",
-		"comments": [{"time": "2016-5-11 16:43:46", "text":"Wow"}],
+		"comments": {"time": "2016-5-11 16:43:46", "text":"Wow"},
 		"user": "Herb"
 	}
 }
