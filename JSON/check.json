@@ -1,12 +1,3 @@
-<<<<<<< HEAD
-{
-	"lastCheckIn":{
-		"time": "2016-5-11 16:43:46",
-		"status": "It's a miracle!!",
-		"comments": {"time": "2016-5-11 16:43:46", "text":"Wow"},
-		"user": "Herb"
-	}
-}
-=======
+
 {"time":"2016-5-13  13:33:17","comments":[{"text":"MHUHAHAHAH!!!!!","userProfile":{"user":"Anon","profilepic":"Images/ProfilePics/star_wars.jpg"},"time":"2016-5-13  13:33:24"},{"text":"Come on guys, I'm trying to sleep...","userProfile":{"user":"Quite-Normal Hatter","profilepic":"Images/ProfilePics/hamster.jpg"},"time":"2016-5-13  13:33:58"},{"text":"RIDLEYYYY!!!","userProfile":{"user":"Metroid-Girl","profilepic":"Images/ProfilePics/corgi.jpg"},"time":"2016-5-13  13:34:20"},{"text":"lol oK","userProfile":{"user":"Anon","profilepic":"Images/ProfilePics/star_wars.jpg"},"time":"2016-5-13  13:54:48"},{"text":"What's that supposed to mean huh?  huh huh?","userProfile":{"user":"Me","profilepic":"Images/ProfilePics/corgi.jpg"},"time":"2016-5-13  13:56:6"}],"status":"We're all mad here","user":"pwilliams"}
->>>>>>> 5e673ddcf4037289652441af4fb1cd810a2e1668
+
