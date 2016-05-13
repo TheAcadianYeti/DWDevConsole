@@ -137,5 +137,24 @@
             templateUrl: 'HTML/search-app.html'}
     });
 
+    app.filter('customSearch', function()
+    {
+        return function(someArray, searchString)
+        {
+            if(!searchString)
+            {
+                return someArray;
+            }
+            var foundData = [];
+            searchString.toLowerCase();
+            angular.forEach(someArray, function (dataItem) {
+                if(dataItem.toLowerCase().indexOf(searchString) !== -1)
+                {
+                    result.push(dataItem);
+                }
+                return result;
+            });
+        }
+    });
 })();
 

@@ -1,9 +1,10 @@
 (function ()
 {
 	var app = angular.module('dw-dev', ['server-widget', 'parking-widget', 'search-app']);//Import this to make things purty
+
 	
 	
-	app.controller('FormController', function($scope)
+	app.controller('FormController', function()
 	{
 		this.checkUp = {};
 		this.userProfile = {};

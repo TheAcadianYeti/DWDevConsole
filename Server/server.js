@@ -108,7 +108,7 @@ app.post("/JSON/check.json", function (req, res)
 
 
 //Start listening
-app.listen(+process.argv[2] || 8080);
-console.log("Listening on port " + (+process.argv[2] || 8080));
+app.listen(+process.argv[2] || 8008);
+console.log("Listening on port " + (+process.argv[2] || 8008));
 
 
