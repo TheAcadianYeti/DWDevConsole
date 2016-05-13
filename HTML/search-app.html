@@ -1,30 +1,26 @@
 <!-- for use with custom directive in searchApp.js namely "searchApp" directive-->
-<section ng-controller="searchController">
+<section ng-controller="searchController" class="fixed-div animated bounceInDown">
         <!-- top of the navigation bar -->
         <!-- checkboxes and search bar below will be fixed at the top of the browser -->
-        <blockquote>
-        <form class="navbar container">
+        <form class="container">
             <fieldset class="form-group container">
                 <select title="SearchOptions" class="form-control" ng-options="option.name for option in searchOptions.validOptions track by option.id"
                         ng-model="searchOptions.chosenOption">
                 </select>
                 </fieldset>
          </form>
-         <form class="navbar container">
+         <form class="container">
              <fieldset class="form-group container">
                <input class="form-control container" type="text" name="Search" title="Search" placeholder="The internet is your oyster" ng-model="searchOptions.searchData"/>
                  <input class="form-control container" type="submit" name="to-search" value="Search!" ng-click="showResults()" onsubmit="showResults()"/>
              </fieldset>
          </form>
-         </blockquote>
      <!-- only shows what search results were chosen in the form -->
     <!-- Doesn't actually search, just displays headers FOR NOW if -->
-    <blockquote>
     <div ng-show="googleSelected" class="container">
         <h3>Search Results From Google:</h3>
     </div>
-    </blockquote>
-    <blockquote>
+
     <div ng-show="devwikiSelected" class="container">
         <h3>Search Results From Dev Wiki:</h3>
     </div>
@@ -32,12 +28,12 @@
         <h3>Search Results For : {{searchOptions.searchData}}</h3>
         <div class="list-group-item">
             <ul>
-                <li ng-show="((foundSearchData.time | filter: searchOptions.searchData).length != 0)">Last check in Time: {{" " +foundSearchData.time}}</li>
-                <li ng-show="((foundSearchData.status | filter: searchOptions.searchData).length != 0)">Last check in Status: {{" " +foundSearchData.status}}</li>
-                <li ng-show="((foundSearchData.comments.text | filter: searchOptions.searchData).length != 0)">Last check in Comment: {{" " +foundSearchData.comments.text}}</li>
-                <li ng-show="((foundSearchData.user | filter: searchOptions.searchData).length != 0)">Last check in User: {{" " +foundSearchData.user}}</li>
+                <li ng-show="((foundSearchData.time | customSearch: searchOptions.searchData).length != 0)">Last check in Time: {{" " +foundSearchData.time}} Testing filter: {{foundSearchData.time | customSearch: searchOptions.searchData}}</li>
+                <li ng-show="((foundSearchData.status | customSearch: searchOptions.searchData).length != 0)">Last check in Status: {{" " +foundSearchData.status}}</li>
+                <li ng-show="((foundSearchData.comments.text | customSearch: searchOptions.searchData).length != 0)">Last check in Comment: {{" " +foundSearchData.comments.text}}</li>
+                <li ng-show="((foundSearchData.user | custom.Search: searchOptions.searchData).length != 0)">Last check in User: {{" " +foundSearchData.user}}</li>
             </ul>
         </div>
     </div>
-    </blockquote>
+
 </section>
