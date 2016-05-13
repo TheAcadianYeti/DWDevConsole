@@ -36,6 +36,7 @@
 						//{
 							this.loggedIn = true;
 							this.user = userName;
+							//Pick a 
 							userName = "";
 							pass="";
 						//}

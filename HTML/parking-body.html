@@ -1,5 +1,5 @@
 <!--Working on the log in panel-->
-<div class="fixed-div">
+<div class="fixed-div animated bounceInDown">
 	<form name="loginForm" ng-class="parking.loggedIn ? 'form-signin logged-in container' : 'form-signin log-in-section container' " ng-submit="loginForm.$valid && (parking.loggedIn ? parking.signOut() : parking.authenticate(userName, password))">
 		<img class="profile-img" ng-src="Images/hamster_1.jpg"/>
 		<div ng-hide="parking.loggedIn">
@@ -21,26 +21,31 @@
 <section class="container" ng-controller="FormController as checkCtrl" ng-init="parking.init()">
 	<div class="text-center">
 		<h2>
-		Last marking was <div class="text-danger inline">{{parking.lastCheckIn.time}}</div>
+		Last marking was <div class="text-danger">{{parking.lastCheckIn.time}}</div>
 		<cite class="clearfix"><i>{{parking.lastCheckIn.status}} - {{parking.lastCheckIn.user}}</i></cite>
 		</h2>
 	</div>
-	<div class="container">
+	<div class="container pull-right">
 		<ul>
-			<li ng-repeat="comment in parking.lastCheckIn.comments" class="bg-info">
-				<blockquote>
-					{{comment.text}}
-					<cite class="clearfix"><strong>{{comment.user}} @ {{comment.time}}</strong></cite>
-				</blockquote>
+			<li ng-repeat="comment in parking.lastCheckIn.comments" class="comments bg-info animated bounceInLeft top-buffer">
+				<div class="row">
+					<img ng-src="Images/ProfilePics/star_wars.jpg" class="profile-pic col-xs-1"/>
+					<blockquote class="col-xs-6">
+						{{comment.text}}
+						<cite class="clearfix"><strong>{{comment.user}} @ {{comment.time}}</strong></cite>
+					</blockquote>
+				</div>
 			</li>
+			<br/>
 		</ul>
 	</div>
 	
 	
 		<div class="page-header"><h2>Comment</h2></div>
 		<form name="reviewForm"" ng-submit="checkCtrl.addComment(parking.lastCheckIn, parking.user); parking.postComment()">
+			<h4>Hi {{parking.user}}</h4>
 			<fieldset class="form-group">
-				<textarea ng-model="checkCtrl.comment" class="form-control" placeholder="Enter a comment if you'd like..." title="Comment"></textarea>
+				<textarea ng-model="checkCtrl.comment" class="form-control" placeholder="Do you something to add?" title="Comment"></textarea>
 			</fieldset>	
 			<fieldset class="form-group">
 				<input type="submit" class="btn btn-primary pull-right" value="Submit Comment"/>
@@ -50,12 +55,11 @@
 
 		<div class="page-header"><h2>Check-in</h2></div>
 		<form name="reviewForm"" ng-submit="checkCtrl.updateCheck(parking.lastCheckIn, parking.user); parking.postUpdate()">
-			<h4>Hi {{parking.user}}</h4>
 			<fieldset class="form-group">
-				<textarea ng-model="checkCtrl.checkUp.status" class="form-control" placeholder="Have something to add?" title="Comment"></textarea>
+				<textarea ng-model="checkCtrl.checkUp.status" class="form-control" placeholder="Did you see the parking man?  Who lives on drury lane?" title="Comment"></textarea>
 			</fieldset>	
 			<fieldset class="form-group">
-				<input type="submit" class="btn btn-primary pull-right" value="Submit Check-In"/>
+				<input type="submit" class="btn btn-primary pull-right" value="Submit Check-In" ng-click="showConfirm($event)"/>
 			</fieldset>
 		</form>
 </section>	

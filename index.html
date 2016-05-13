@@ -4,15 +4,18 @@
 	<head>
 		<link rel="stylesheet" type="text/css" href="bootstrap/bootstrap.css"/>
 		<link rel="stylesheet" type="text/css" href="CSS/customDiv.css"/>
+		<link rel="stylesheet" type="text/css" href="bootstrap/animate.css"/>
+		
 		<script type="text/javascript" src="angular/angular.min.js"></script>
 		<script type="text/javascript" src="JS/app.js"></script>
 		<script type="text/javascript" src="JS/ServerWidget.js"></script>
 		<script type="text/javascript" src="JS/ping.js/src/ping.js"></script>
 		<script type="text/javascript" src="JS/ParkingWidget.js"></script>
+		<!--Adding angular-material to try to purty things up a bit-->
 	</head>
 	<!--Remove this, just auto refreshes page-->
 	<!--<meta http-equiv="refresh" content="5" >-->
-	<body>
+	<body ng-app="dw-dev" class="custom_background">
 		<!--<server-title></server-title>-->
 		<!--<server-body></server-body>-->
 		<parking-title></parking-title>
