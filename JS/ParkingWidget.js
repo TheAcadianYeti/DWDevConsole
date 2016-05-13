@@ -112,6 +112,7 @@
 				{
 					$http.get("JSON/check.json").then(function(res)
 					{
+						_self.pickPic(_self.setProfile, "Anon");
 						console.log("Successfully loaded data");
 						var obj = res.data;
 						_self.lastCheckIn = obj;
