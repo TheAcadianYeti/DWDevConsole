@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9031317a-b904-4820-8994-b8a18c231f21" name="Default" comment="Just putting the index file here, with my search app included. you'll&#10;have to set 'search-app' as a dependency in app.js!">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HTML/search-app.html" afterPath="$PROJECT_DIR$/HTML/search-app.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JS/ParkingWidget.js" afterPath="$PROJECT_DIR$/JS/ParkingWidget.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSON/check.json" afterPath="$PROJECT_DIR$/JSON/check.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Server/server.js" afterPath="$PROJECT_DIR$/Server/server.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CSS/customDiv.css" afterPath="$PROJECT_DIR$/CSS/customDiv.css" />
     </list>
     <ignored path="DWDevConsole.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -50,9 +46,20 @@
       <file leaf-file-name="server.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Server/server.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1938">
-              <caret line="114" column="0" selection-start-line="114" selection-start-column="0" selection-end-line="114" selection-end-column="0" />
-              <folding />
+            <state relative-caret-position="1921">
+              <caret line="113" column="0" selection-start-line="113" selection-start-column="0" selection-end-line="113" selection-end-column="0" />
+              <folding>
+                <marker date="1463167475961" expanded="true" signature="1113:2246" placeholder="{...}" />
+                <marker date="1463167475961" expanded="true" signature="1153:1881" placeholder="{...}" />
+                <marker date="1463167475961" expanded="true" signature="1271:1325" placeholder="{...}" />
+                <marker date="1463167475961" expanded="true" signature="1480:1597" placeholder="{&quot;from&quot;: 'dwparkingfun@gmail.com'...}" />
+                <marker date="1463167475961" expanded="true" signature="1706:1873" placeholder="{...}" />
+                <marker date="1463167475961" expanded="true" signature="1724:1785" placeholder="{...}" />
+                <marker date="1463167475961" expanded="true" signature="1797:1869" placeholder="{...}" />
+                <marker date="1463167475961" expanded="true" signature="1926:2246" placeholder="{...}" />
+                <marker date="1463167475961" expanded="true" signature="1930:2000" placeholder="//..." />
+                <marker date="1463167475961" expanded="true" signature="2136:2246" placeholder="{...}" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -67,8 +74,28 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="check.json" pinned="false" current-in-tab="true">
+      <file leaf-file-name="check.json" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/JSON/check.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="51">
+              <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="search-app.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/HTML/search-app.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="544">
+              <caret line="32" column="17" selection-start-line="32" selection-start-column="17" selection-end-line="32" selection-end-column="17" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="profiles.json" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/JSON/profiles.json">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
               <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -77,21 +104,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="search-app.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/HTML/search-app.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="2" column="118" selection-start-line="2" selection-start-column="118" selection-end-line="2" selection-end-column="118" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="customDiv.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/CSS/customDiv.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="254">
-              <caret line="15" column="17" selection-start-line="15" selection-start-column="17" selection-end-line="15" selection-end-column="17" />
+            <state relative-caret-position="388">
+              <caret line="23" column="18" selection-start-line="23" selection-start-column="18" selection-end-line="23" selection-end-column="18" />
               <folding />
             </state>
           </provider>
@@ -119,10 +136,10 @@
         <option value="$PROJECT_DIR$/Server/server.js" />
         <option value="$PROJECT_DIR$/HTML/parking-body.html" />
         <option value="$PROJECT_DIR$/JS/searchApp.js" />
-        <option value="$PROJECT_DIR$/CSS/customDiv.css" />
         <option value="$PROJECT_DIR$/HTML/search-app.html" />
         <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/JSON/check.json" />
+        <option value="$PROJECT_DIR$/CSS/customDiv.css" />
       </list>
     </option>
   </component>
@@ -342,12 +359,12 @@
       <option name="presentableId" value="Default" />
       <updated>1463073421226</updated>
       <workItem from="1463073423004" duration="21117000" />
-      <workItem from="1463155499517" duration="10710000" />
+      <workItem from="1463155499517" duration="11586000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="31827000" />
+    <option name="totallyTimeSpent" value="32703000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -466,21 +483,24 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Server/server.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1938">
-          <caret line="114" column="0" selection-start-line="114" selection-start-column="0" selection-end-line="114" selection-end-column="0" />
-          <folding />
+        <state relative-caret-position="1921">
+          <caret line="113" column="0" selection-start-line="113" selection-start-column="0" selection-end-line="113" selection-end-column="0" />
+          <folding>
+            <marker date="1463167475961" expanded="true" signature="1113:2246" placeholder="{...}" />
+            <marker date="1463167475961" expanded="true" signature="1153:1881" placeholder="{...}" />
+            <marker date="1463167475961" expanded="true" signature="1271:1325" placeholder="{...}" />
+            <marker date="1463167475961" expanded="true" signature="1480:1597" placeholder="{&quot;from&quot;: 'dwparkingfun@gmail.com'...}" />
+            <marker date="1463167475961" expanded="true" signature="1706:1873" placeholder="{...}" />
+            <marker date="1463167475961" expanded="true" signature="1724:1785" placeholder="{...}" />
+            <marker date="1463167475961" expanded="true" signature="1797:1869" placeholder="{...}" />
+            <marker date="1463167475961" expanded="true" signature="1926:2246" placeholder="{...}" />
+            <marker date="1463167475961" expanded="true" signature="1930:2000" placeholder="//..." />
+            <marker date="1463167475961" expanded="true" signature="2136:2246" placeholder="{...}" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/HTML/parking-title.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/JSON/profiles.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -514,14 +534,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/CSS/customDiv.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="254">
-          <caret line="15" column="17" selection-start-line="15" selection-start-column="17" selection-end-line="15" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="459">
@@ -530,18 +542,34 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/HTML/search-app.html">
+    <entry file="file://$PROJECT_DIR$/JSON/profiles.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="118" selection-start-line="2" selection-start-column="118" selection-end-line="2" selection-end-column="118" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/JSON/check.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="51">
+          <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CSS/customDiv.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="388">
+          <caret line="23" column="18" selection-start-line="23" selection-start-column="18" selection-end-line="23" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HTML/search-app.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="544">
+          <caret line="32" column="17" selection-start-line="32" selection-start-column="17" selection-end-line="32" selection-end-column="17" />
           <folding />
         </state>
       </provider>
