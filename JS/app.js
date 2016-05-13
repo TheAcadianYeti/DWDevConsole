@@ -1,10 +1,6 @@
 (function ()
 {
-<<<<<<< HEAD
 	var app = angular.module('dw-dev', ['search-app','server-widget', 'parking-widget']);
-=======
-	var app = angular.module('dw-dev', ['server-widget', 'parking-widget']);//Import this to make things purty
->>>>>>> 5e673ddcf4037289652441af4fb1cd810a2e1668
 	
 	
 	app.controller('FormController', function()
