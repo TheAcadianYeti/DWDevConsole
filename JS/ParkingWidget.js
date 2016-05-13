@@ -19,7 +19,6 @@
 			{
 				_self = this;
 				_self.loggedIn = false;
-				//this.user = "Anon";
 				_self.userProfile = {
 					user: "Anon",
 					profilepic: "Images/ProfilePics/star_wars.jpg",
@@ -88,7 +87,8 @@
 				//Post a check in update
 				this.postUpdate  = function()
 				{
-					this.config = {
+					this.config = 
+					{
 						method: 'POST',
 						headers: {
 							'Content-Type': 'application/json',	
