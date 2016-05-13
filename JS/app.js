@@ -3,26 +3,27 @@
 	var app = angular.module('dw-dev', ['server-widget', 'parking-widget']);//Import this to make things purty
 	
 	
-	app.controller('FormController', function()
+	app.controller('FormController', function($scope)
 	{
 		this.checkUp = {};
+		this.userProfile = {};
 		this.comment="";
 		this.updateCheck = function(checkIn, user)//This is what we assign values to
 		{
 			//Never overrite just modify existing values!  Doesnt like it 
-				checkIn.user = user;
-				var date = formatDate(Date.now());
-				checkIn.time = date;
-				checkIn.comments = [];
-				checkIn.status = this.checkUp.status;
-				this.checkUp = {};
+			checkIn.user = user;
+			var date = formatDate(Date.now());
+			checkIn.time = date;
+			checkIn.comments = [];
+			checkIn.status = this.checkUp.status;
+			this.checkUp = {};
 		};
 		
 		this.addComment = function(checkIn, user)
 		{
 				checkIn.comments.push({
 				text: this.comment,
-				user: user,
+				userProfile: user,
 				time: formatDate(Date.now()),
 				});
 				this.comment="";

@@ -38,6 +38,11 @@ app.get('*', function(req, res)
 });
 
 
+app.get("/JSON/profiles.json", function(req, res)
+{
+	res.sendFile("/JSON/profiles.json");
+});
+
 //Post requests
 app.post("/JSON/check.json", function (req, res)
 {
@@ -85,6 +90,7 @@ app.post("/JSON/check.json", function (req, res)
 				res.end("Failed to read file");
 			//Change text to an obj
 			var obj = JSON.parse(data);
+			console.log(req.body.comments[0]);
 			//We want to change the values to change the comments and thats it
 			obj.comments = req.body.comments;
 			//Write to file
