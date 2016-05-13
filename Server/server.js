@@ -90,7 +90,6 @@ app.post("/JSON/check.json", function (req, res)
 				res.end("Failed to read file");
 			//Change text to an obj
 			var obj = JSON.parse(data);
-			console.log(req.body.comments[0]);
 			//We want to change the values to change the comments and thats it
 			obj.comments = req.body.comments;
 			//Write to file
@@ -108,7 +107,7 @@ app.post("/JSON/check.json", function (req, res)
 
 
 //Start listening
-app.listen(+process.argv[2] || 8008);
-console.log("Listening on port " + (+process.argv[2] || 8008));
+app.listen(+process.argv[2] || 8080);
+console.log("Listening on port " + (+process.argv[2] || 8080));
 
 
