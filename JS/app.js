@@ -30,6 +30,7 @@
 				this.comment="";
 		};
 	});
+	
 })();
 
 //Takes a date object and converts it into YYYY-MM-DD  HH:mm:SS

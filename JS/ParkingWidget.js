@@ -10,6 +10,14 @@
 		};
 	});
 	
+	app.directive('parkingModal', function()
+	{
+		return {
+			restrict: 'E',
+			templateUrl: "HTML/singup-modal.html"
+		};
+	});
+	
 	app.directive('parkingBody', function($http)
 	{
 		return {
