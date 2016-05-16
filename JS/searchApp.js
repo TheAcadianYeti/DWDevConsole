@@ -14,30 +14,29 @@
     // Controller for a few different aspects of submitting the search data and controlling what is searched
     //-------------------------------------------------------------------------------------------------------------
 
-    app.controller('searchController',['$scope', "$http", function($scope, $http)
+    app.controller('searchController',['$scope', '$http', '$sce', function($scope, $http, $sce)
     {
-        $scope.googleSelected = false;
+        $scope.trustSource = function(source)
+        {
+            return $sce.trustAsResourceUrl(source);
+        };
+        $scope.jiraSelected = false;
         $scope.devWikiSelected = false;
-        $scope.parkingOMaticSelected = false;
-        $scope.chosenUrl = "http://google.ca";
+        $scope.chosenUrl = "http://stackoverflow.com/search?q=";
         $scope.searchData = "";
         $scope.foundSearchData = [];
         $scope.searchOptions =
         {
             validOptions:
                 [
-                    {id: 1, name: 'Parking-O-Matic!'},
-                    {id: 2, name: 'Dev Wiki'},
-                    {id: 3, name: 'Google'},
-                    {id: 4, name: 'Where would you like to search today ?'}
+                    {id: 1, name: 'Dev Wiki'},
+                    {id: 2, name: 'Jira'},
+                    {id: 3, name: 'Where would you like to search today ?'}
                 ],
-            chosenOption: {id: 4, name: 'Where would you like to search today ?'},
+            chosenOption: {id: 3, name: 'Where would you like to search today ?'},
             searchData: ''
         };
 
-        $scope.googleData = "";
-        $scope.devWikiData = "";
-        $scope.parkingOMaticData = "";
 
         //---------------------------------------------------------------------------------------------------------
         // Variable containing useful things we will be using with our search widget
@@ -48,9 +47,8 @@
 
         $scope.widget =
         {
-            google: 'https://www.google.ca/?ion=1&espv=2#q=',
+            jira: 'http://jira.deltaware.com:8080/issues/?jql',
             devWiki: 'https://confluence.deltaware.com/dosearchsite.action?queryString=',
-            parkingOMatic: '/JSON/check.json',
             url: $scope.chosenUrl
 
         };
@@ -59,16 +57,16 @@
         // Variables below call functions to set our booleans used with ng-show to true so that the correct
         // search results are displayed.
         //---------------------------------------------------------------------------------------------------------
+
         $scope.showResults = function showResults()
         {
             switch($scope.searchOptions.chosenOption.name)
             {
-                case 'Google': $scope.googleSelected = true;
+                case 'Jira':
                 {
-                    $scope.googleSelected = true;
+                    $scope.jiraSelected = true;
                     $scope.devwikiSelected = false;
-                    $scope.parkingOMaticSelected = false;
-                    $scope.chosenUrl = $scope.widget.google;
+                    $scope.chosenUrl = $scope.widget.jira;
                     processUrl($scope.chosenUrl);
 
                 }
@@ -76,28 +74,17 @@
                 case 'Dev Wiki':
                 {
                     $scope.devwikiSelected = true;
-                    $scope.googleSelected = false;
-                    $scope.parkingOMaticSelected = false;
+                    $scope.jiraSelected = false;
                     $scope.chosenUrl = $scope.widget.devWiki;
                     processUrl($scope.chosenUrl);
 
                 }
                     break;
-                case 'Parking-O-Matic!':
-                {
-                    $scope.parkingOMaticSelected = true;
-                    $scope.googleSelected = false;
-                    $scope.devWikiSelected = false;
-                    $scope.chosenUrl = $scope.widget.parkingOMatic;
-                    processUrl($scope.chosenUrl);
-                }
-                    break;
                 default:
                 {
-                    $scope.parkingOMaticSelected = true;
-                    $scope.googleSelected = false;
+                    $scope.jiraSelected = false;
                     $scope.devWikiSelected = false;
-                    $scope.chosenUrl = $scope.widget.parkingOMatic;
+                    $scope.chosenUrl = $scope.widget.devWiki;
                     processUrl($scope.chosenUrl);
                 }
                     break;
@@ -109,24 +96,30 @@
         // variable from our factory
         //---------------------------------------------------------------------------------------------------------
 
-        function processUrl(chosenUrl)
+        function processUrl(chosenUrl,$sce)
         {
-            $scope.searchArray = $scope.searchData.split(" ");
-            if($scope.chosenUrl === $scope.widget.devWiki || $scope.chosenUrl === $scope.widget.google)
+            $scope.searchArray = $scope.searchOptions.searchData.split(" ");
+
+            angular.forEach($scope.searchArray, function (value, key)
             {
-                for (var data in $scope.searchArray)
+                if(key !== $scope.searchArray.length-1)
                 {
-                    $scope.chosenUrl += data + "+";
+                    $scope.chosenUrl += value + "+";
                 }
-            }
-            $http.get($scope.chosenUrl).success(function(response)
-            {
-                $scope.foundSearchData = response;
-            }).error(function(err)
-            {
-                alert("Error!" + err);
+                else
+                {
+                    $scope.chosenUrl += value;
+                }
             });
         }
+        //$http.get($scope.chosenUrl).success(function(response)
+        //{
+            //$scope.foundSearchData = response;
+        //}).error(function(err)
+       // {
+          //  alert("Error!" + err);
+       // });
+
     }]);
 
     //---------------------------------------------------------------------------------------------------------
