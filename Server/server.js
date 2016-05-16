@@ -25,6 +25,7 @@ var transporter = mailer.createTransport(
 
 
 
+
 app.get("/JSON/check.json", function(req, res)
 {
 	res.sendFile("/JSON/check.json");
@@ -63,7 +64,7 @@ app.post("/JSON/check.json", function (req, res)
 		var text = "Cars were just marked!!\n\nSent using not an iphone";
 		var mailOptions = {
 			from: 'dwparkingfun@gmail.com',
-			to: 'pfw143922@gmail.com',
+			to: 'pfw143822@gmail.com',
 			subject: 'Tires were marked',
 			text: text
 		};
@@ -89,24 +90,46 @@ app.post("/JSON/check.json", function (req, res)
 		//Write to check.json but just the comment
 		//Read the file as a JSON
 		console.log("Writing " + __dirname + " to json file");
-		fs.readFile(__dirname + "/../JSON/check.json", 'utf8', function (err, data) {
-			if(err)
-				res.end("Failed to read file");
-			//Change text to an obj
-			var obj = JSON.parse(data);
-			//We want to change the values to change the comments and thats it
-			obj.comments = req.body.comments;
+
 			//Write to file
 			fs.writeFile(__dirname + "/../JSON/check.json", JSON.stringify(req.body), function(err)
 			{
 				if(err)
 					res.end("Failed to post comment");
 			});
-		});
 		res.end("Successfully posted update");
 	}
 
 });
+
+
+//Simple method adds a user into our "database"
+//Structure of user will be as follows, for now, 
+app.post("/JSON/users.json", function(req, res)
+{
+	if(req.query.createAccount === "true")
+	{
+		console.log("Writing " + __dirname + " to json file");
+		fs.readFile(__dirname + "/../JSON/users.json", 'utf8', function (err, data) {
+			if(err)
+				res.end("Failed to read file");
+			//Change text to an obj
+			var obj = JSON.parse(data);
+			//We want to change the values to change the comments and thats it
+			var user = req.body;
+			console.log(req.body);
+			obj.users.push(user);
+			//Write to file
+			fs.writeFile(__dirname + "/../JSON/users.json", JSON.stringify(obj), function(err)
+			{
+			if(err)
+					res.end("Failed to create account");
+			});
+		});
+		res.end("Successfully posted update");
+	}
+});
+
 
 
 //Start listening

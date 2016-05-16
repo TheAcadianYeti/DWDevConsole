@@ -5,15 +5,13 @@
 		<div ng-hide="parking.loggedIn">
 			<h4 class="form-signin-heading">Please sign in</h4>
 			<label class="sr-only">Username...</label>
-			<input type="text" id="inputUser" class="form-control" placeholder="Username..." ng-model="userName" autofocus required>
+			<input type="text" id="inputUser" class="form-control" placeholder="Username..." ng-model="userName" autofocus required/>
 			<label for="inputPass" class="sr-only">Password</label>
-			<input type="password" id="inputPass" class="form-control" placeholder="Password" required ng-model="password"></label>
+			<input type="password" id="inputPass" class="form-control" placeholder="Password" required ng-model="password"/>
 			<button class="btn btn-sm btn-primary btn-block" type="submit" >Sign in</button>
-			<!--Here is how we would invoke the modal, note the modal data toggle, and data target being signupModel which is the id of our modal-->
-			<a class="btn btn-sm btn-primary btn-block" data-toggle="modal" data-target="#signupModal" type="button">Create Account</a>
-			<!--Including it here, won't show unless we click the button-->
 			<parking-modal></parking-modal>
-
+			<!--Here is how we would invoke the modal, note the modal data toggle, and data target being signupModel which is the id of our modal-->
+			<!--Including it here, won't show unless we click the button-->
 		</div>
 		<div ng-show="parking.loggedIn">
 			<h4 class="form-signin-heading">Welcome {{parking.userProfile.user}}!</h4>

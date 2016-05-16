@@ -1,6 +1,6 @@
 (function ()
 {
-	var app = angular.module('dw-dev', ['server-widget', 'parking-widget', 'search-app']);//Import this to make things purty
+	var app = angular.module('dw-dev', ['server-widget', 'parking-widget', 'search-app', 'modal-handler', 'ui.bootstrap']);//Import this to make things purty
 
 	
 	
