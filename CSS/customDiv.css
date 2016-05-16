@@ -4,6 +4,17 @@
 	right: 1em;
 	z-index: 1;
 }
+
+.alert{
+	width: 80%;
+	margin-left: 30px;
+}
+
+.fixed{
+	position: fixed;
+	z-index: 1;
+}
+
 .top-search{
 	 background-color: #99ceff ;
 	 height:50px;
@@ -11,6 +22,7 @@
 	 border:3px ridge dimgrey;
 	 text-align: center;
  }
+
 .top-results{
 	background-color: #99ceff;
 	width: 90%;

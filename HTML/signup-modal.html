@@ -1,0 +1,32 @@
+<!--Basic setup for the structure of a modal, note how we show the modal is contained inside of parking body-->
+<script type="text/ng-template" id="signup-modal.html">
+			<div class="modal-header">
+				<h4 class="modal-title">Create an account!</h4>
+			</div>
+			<div class="modal-body">
+				<form name="createForm">
+					<fieldset class="form-group">
+						<input type="email" ng-model="modalCtrl.email" class="form-control" placeholder="Enter email..." title="Email" required></input>
+					</fieldset>
+					<fieldset class="form-group">
+						<input ng-model="modalCtrl.username" type="text" class="form-control" placeholder="Enter username..." title="Username" required></input>
+					</fieldset>
+					<fieldset class="form-group">
+						<input id="pass" name="pass" ng-model="modalCtrl.pass" type="password" class="form-control" placeholder="Enter password..." title="password" ng-required></input>
+					</fieldset>
+					<!--
+					<fieldset class="form-group">
+						<input ng-model="tempPass" type="password" class="form-control" placeholder="Repeat password" pw-check="modalCtrl.pass" title="verify password" ng-required></input>
+					</fieldset>-->
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" ng-click="modalCtrl.cancel()">Cancel</button>
+				<!--Prevents button from being pressed until everyting is entered-->
+				<button type="button" class="btn btn-primary" ng-click="createForm.$valid ? modalCtrl.ok(parking.createAccount) : modalCtrl.valid=false">Create Account</button>
+			</div>
+			<div ng-hide="modalCtrl.valid" class="text-center alert alert-danger animated fadeInRight" role="alert">Enter a valid email...</div>
+
+</script>
+<button class="btn btn-sm btn-primary btn-block" ng-click="modalCtrl.openModal()" type="button">Create Account</button>
+

@@ -1,5 +1,5 @@
 (function() {
-	var app = angular.module('parking-widget', []);
+	var app = angular.module('parking-widget', ['modal-handler']);
 	
 	//Title directive
 	app.directive('parkingTitle', function()
@@ -17,7 +17,7 @@
 			templateUrl: 'HTML/parking-body.html',
 			controller: function()
 			{
-				_self = this;
+				var _self = this;
 				_self.loggedIn = false;
 				_self.userProfile = {
 					user: "Anon",
@@ -37,15 +37,45 @@
 						profilepic: profile,
 					}
 				}
-				this.authenticate = function(userName, pass)
+				
+				this.createAccount = function(userName, pass, email)
+				{
+					var user = {
+						userName: userName,
+						pass: pass,
+						email: email
+					};
+					//Creates an acconut on the server
+					this.config = {
+						method: "POST",
+						headers: {
+							'Content-Type': 'application/json',
+						},
+						url: 'JSON/users.json',
+						data: user,
+						params: {createAccount: 'true'}
+					}
+					
+					$http(this.config).then(function(res)
+					{
+						console.log(res.data);
+					}, function(res)
+					{
+						console.log(res.data);
+					});
+				}
+				
+				this.authenticate = function(alertCallback, userName, pass)
 				{
 					//Any one can log in at the moment
+					//try and get the username from server, if it is null print an alert
 					//if(userName === "pwilliams")
 					//{
 						//if(pass === "dl546d")
 						//{
+							alertCallback("Test test");
 							_self.loggedIn = true;
-							var profile; 
+							var profile;
 							_self.pickPic(this.setProfile, userName);
 
 						//}
@@ -65,7 +95,6 @@
 				//Posts a comment
 				this.postComment = function()
 				{
-					console.log(_self.lastCheckIn.comments);
 					this.config = {
 						method: "POST",
 						headers: {

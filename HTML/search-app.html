@@ -13,7 +13,7 @@
              </br>
                  <input class="form-group top-search" type="submit" name="to-search" value="Search!" ng-click="showResults()" onsubmit="showResults()"/>
          </form>
-     <!-- only shows what search results were chosen in the form -->
+     <!-- only shows what search results were chosen in the form (default Confluence Dev Wiki)-->
     <!-- Doesn't actually search, just displays headers FOR NOW if -->
     <div ng-show="jiraSelected" class="modal-body text-center">
        <!-- <search-content></search-content> -->
@@ -24,5 +24,4 @@
      <!--   <search-content></search-content> -->
         <iframe ng-src="{{trustSource(chosenUrl)}}" allowfullscreen class="top-results"  height="500"></iframe>
     </div>
-
 </section>
