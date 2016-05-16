@@ -16,20 +16,24 @@
      <!-- only shows what search results were chosen in the form -->
     <!-- Doesn't actually search, just displays headers FOR NOW if -->
     <div ng-show="googleSelected" class="top-left-results">
-        <h3>Search Results From Google:</h3>
+        <h4>Search Results From Google For: {{searchOptions.searchData}}</h4>
+        <ul>
+            <li ng-show="((result | filter: searchOptions.searchData).length != 0" ng-repeat="result in foundSearchData">Last check in Comment: {{" " +foundSearchData}}</li>
+        </ul>
     </div>
 
     <div ng-show="devwikiSelected" class="top-left-results">
-        <h3>Search Results From Dev Wiki:</h3>
+        <h4>Search Results From Dev Wiki For: {{searchOptions.searchData}}</h4>
+        <ul>
+            <li ng-show="((result | filter: searchOptions.searchData).length != 0" ng-repeat="result in foundSearchData">Last check in Comment: {{" " +foundSearchData}}</li>
+        </ul>
     </div>
     <div ng-show="parkingOMaticSelected">
-        <h3 class="top-left-results">Search Results For : {{searchOptions.searchData}}</h3>
+        <h4 class="top-left-results">Search Results For: {{searchOptions.searchData}}</h4>
         <div class="top-left-results">
             <ul>
-                <li ng-show="((foundSearchData.time | customSearch: searchOptions.searchData).length != 0)">Last check in Time: {{" " +foundSearchData.time}} Testing filter: {{foundSearchData.time | customSearch: searchOptions.searchData}}</li>
-                <li ng-show="((foundSearchData.status | customSearch: searchOptions.searchData).length != 0)">Last check in Status: {{" " +foundSearchData.status}}</li>
-                <li ng-show="((foundSearchData.comments.text | customSearch: searchOptions.searchData).length != 0)">Last check in Comment: {{" " +foundSearchData.comments.text}}</li>
-                <li ng-show="((foundSearchData.user | custom.Search: searchOptions.searchData).length != 0)">Last check in User: {{" " +foundSearchData.user}}</li>
+                <li ng-show="((comment | filter: searchOptions.searchData).length != 0" ng-repeat="comment in foundSearchData.comments.text">Last check in Comment: {{" " +foundSearchData.comments.text}}</li>
+                <li ng-show="((comment | filter: searchOptions.searchData).length != 0" ng-repeat="comment in foundSearchData.comments.user">Last check in Comment: {{" " +foundSearchData.comments.user}}</li>
             </ul>
         </div>
     </div>

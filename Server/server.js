@@ -34,6 +34,10 @@ app.get('*', function(req, res)
 {
 	//Its because of the other get
 	res.sendFile('./index.html');
+	res.header('Access-Control-Allow-Origin', '*');
+	res.header('Access-Control-Allow-Credentials', true);
+	res.header('Access-Control-Allow-Methods', 'POST, GET, PUT, DELETE, OPTIONS');
+	res.header('Access-Control-Allow-Headers', 'Content-Type');
 	
 });
 
@@ -103,7 +107,6 @@ app.post("/JSON/check.json", function (req, res)
 	}
 
 });
-
 
 
 //Start listening

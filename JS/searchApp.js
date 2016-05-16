@@ -49,7 +49,7 @@
         $scope.widget =
         {
             google: 'https://www.google.ca/?ion=1&espv=2#q=',
-            devWiki: 'https://confluence.deltaware.com/display/DW/Dev+WIKI+Home/',
+            devWiki: 'https://confluence.deltaware.com/dosearchsite.action?queryString=',
             parkingOMatic: '/JSON/check.json',
             url: $scope.chosenUrl
 
@@ -111,13 +111,17 @@
 
         function processUrl(chosenUrl)
         {
-            //for(var data in $scope.searchData.split(' '))
-           //{
-                //$scope.chosenUrl += data + "+";
-            //}
+            $scope.searchArray = $scope.searchData.split(" ");
+            if($scope.chosenUrl === $scope.widget.devWiki || $scope.chosenUrl === $scope.widget.google)
+            {
+                for (var data in $scope.searchArray)
+                {
+                    $scope.chosenUrl += data + "+";
+                }
+            }
             $http.get($scope.chosenUrl).success(function(response)
             {
-                $scope.foundSearchData = response.lastCheckIn;
+                $scope.foundSearchData = response;
             }).error(function(err)
             {
                 alert("Error!" + err);
@@ -136,25 +140,6 @@
             controller: 'searchController',
             templateUrl: 'HTML/search-app.html'}
     });
-
-    app.filter('customSearch', function()
-    {
-        return function(someArray, searchString)
-        {
-            if(!searchString)
-            {
-                return someArray;
-            }
-            var foundData = [];
-            searchString.toLowerCase();
-            angular.forEach(someArray, function (dataItem) {
-                if(dataItem.toLowerCase().indexOf(searchString) !== -1)
-                {
-                    result.push(dataItem);
-                }
-                return result;
-            });
-        }
-    });
+    
 })();
 
