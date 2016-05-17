@@ -65,15 +65,27 @@
 					});
 				}
 				
-				this.authenticate = function(alertCallback, userName, pass)
+				this.authenticate = function(userName, pass)
 				{
+						this.config = {
+						method: "GET",
+						headers: {
+							'Content-Type': 'application/json',
+						},
+						url: 'JSON/users.json',
+						data: {user:userName, pass:pass},
+						}
+						
+						$http.get("JSON/users.json").then(function(res)
+						{
+							console.log(res);
+						});
 					//Any one can log in at the moment
 					//try and get the username from server, if it is null print an alert
 					//if(userName === "pwilliams")
 					//{
 						//if(pass === "dl546d")
 						//{
-							alertCallback("Test test");
 							_self.loggedIn = true;
 							var profile;
 							_self.pickPic(this.setProfile, userName);
