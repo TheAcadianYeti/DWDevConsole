@@ -22,7 +22,7 @@
         };
         $scope.jiraSelected = false;
         $scope.devWikiSelected = false;
-        $scope.chosenUrl = "http://stackoverflow.com/search?q=";
+        $scope.chosenUrl = "https://confluence.deltaware.com/dosearchsite.action?queryString=";
         $scope.searchData = "";
         $scope.foundSearchData = [];
         $scope.searchOptions =
@@ -31,9 +31,8 @@
                 [
                     {id: 1, name: 'Dev Wiki'},
                     {id: 2, name: 'Jira'},
-                    {id: 3, name: 'Where would you like to search today ?'}
                 ],
-            chosenOption: {id: 3, name: 'Where would you like to search today ?'},
+            chosenOption: {id: '1', name: 'Dev Wiki'},
             searchData: ''
         };
 
@@ -112,13 +111,6 @@
                 }
             });
         }
-        //$http.get($scope.chosenUrl).success(function(response)
-        //{
-            //$scope.foundSearchData = response;
-        //}).error(function(err)
-       // {
-          //  alert("Error!" + err);
-       // });
 
     }]);
 
