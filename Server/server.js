@@ -43,8 +43,31 @@ app.get('*', function(req, res)
 	
 });
 
+app.get("JSON/users.json", function(req, res)
+{
+	//search the user names to figure stuff out 
+	fs.readFile(__dirname + "/../JSON/users.json", 'utf8', function (err, data) 
+	{
+		if(err)
+			res.end("Failed to send ifle");
+			var obj = JSON.parse(data);
+		for (usr of obj.users)
+		{
+			if(usr.userName === req.body.name)
+			{
+				if(usr.pass === req.body.pass)
+				{
+					res.end("Auth granted");//Could do more here if we want
+				}
+			}
+			
+			res.end("Invalid user/pass");
+		}
+		
+	});
+});
 
-app.get("/JSON/profiles.json", function(req, res)
+app.get("JSON/profiles.json", function(req, res)
 {
 	res.sendFile("/JSON/profiles.json");
 });
