@@ -1,6 +1,7 @@
 (function()
 {
-	var app = angular.module('modal-handler', []);
+	var app = angular.module('modal-handler', ['formly', 'formlyBootstrap']);
+	
 	
 	app.directive('parkingModal', function()
 	{
@@ -10,10 +11,54 @@
 			controller: function($uibModal, $window)
 			{
 				var _self = this;
-				_self.email = "";
-				_self.username = "";
-				_self.pass = "";
-				_self.valid = true;
+				_self.model={};
+				
+				_self.fields = [
+					{
+						type: 'input',
+						key: 'email',
+						templateOptions : {
+							label: "Email",
+							required: true,
+							placeholder: "Enter your email..."
+						}
+					},
+					{
+						type: 'input',
+						key: 'username',
+						templateOptions: {
+							label: "Username",
+							required: true,
+							placeholder: "Enter your username..."
+						}
+					},
+					{
+						type: 'input',
+						key: 'pass',
+						templateOptions : {
+							label: 'Password',
+							type: "password",
+							placeholder: "Enter your password..."
+						}
+					},
+					{
+						type: 'input',
+						key: 'verPass',
+						templateOptions : {
+							label: "Verify Password",
+							type: "password",
+							required: true,
+							placeholder: 'Verify password'
+						},
+						validators: {
+							validPass : "$viewValue === model.pass",
+						}
+					}
+				]
+				
+				
+				
+				
 				this.openModal = function()
 				{
 					var modalInstance = $uibModal.open(
@@ -32,9 +77,9 @@
 			
 								_self.cancel = function()
 								{
-									_self.username="";
-									_self.email="";
-									_self.pass="";
+									_self.model.username="";
+									_self.model.email="";
+									_self.model.pass="";
 									$uibModalInstance.dismiss("Cancel");
 								};	
 						},
@@ -45,10 +90,8 @@
 					{
 						_self.valid = true;
 						//At this point we want to call parking to create a new account
-						createAccountCallback(_self.username, _self.pass, _self.email);
-						_self.username="";
-						_self.email="";
-						_self.pass="";
+						createAccountCallback(_self.model.username, _self.model.pass, _self.model.email);
+						_self.model = {};
 					}, function()
 					{
 						_self.valid = true;

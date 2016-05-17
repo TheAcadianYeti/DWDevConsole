@@ -49,7 +49,7 @@
 				<textarea ng-model="checkCtrl.comment" class="form-control" placeholder="Do you something to add?" title="Comment"></textarea>
 			</fieldset>	
 			<fieldset class="form-group">
-				<input type="submit" class="btn btn-primary pull-right" value="Submit Comment"/>
+				<input type="submit" ng-disabled="!checkCtrl.comment" class="btn btn-primary pull-right" value="Submit Comment"/>
 			</fieldset>
 		</form>
 
@@ -60,7 +60,7 @@
 				<textarea ng-model="checkCtrl.checkUp.status" class="form-control" placeholder="Did you see the parking man?  Who lives on drury lane?" title="Comment"></textarea>
 			</fieldset>	
 			<fieldset class="form-group">
-				<input type="submit" class="btn btn-primary pull-right" value="Submit Check-In" />
+				<input type="submit" ng-disabled="!checkCtrl.checkUp.status" class="btn btn-primary pull-right" value="Submit Check-In" />
 			</fieldset>
 		</form>
 </section>	
