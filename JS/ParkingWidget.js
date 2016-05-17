@@ -10,7 +10,7 @@
 		};
 	});
 	
-	app.directive('parkingBody', function($http)
+	app.directive('parkingBody', function($http, $window)
 	{
 		return {
 			restrict: 'E',
@@ -65,7 +65,7 @@
 					});
 				}
 				
-				this.authenticate = function(userName, pass)
+				this.authenticate = function(username, pass)
 				{
 						this.config = {
 						method: "GET",
@@ -73,23 +73,39 @@
 							'Content-Type': 'application/json',
 						},
 						url: 'JSON/users.json',
-						data: {user:userName, pass:pass},
+						data: {user:username, pass:pass},
 						}
 						
 						$http.get("JSON/users.json").then(function(res)
 						{
-							console.log(res);
+							var user;
+							for(var i = 0; i < res.data.users.length; i++)
+							{
+								var item = res.data.users[i];
+								console.log(item);
+								if(item.username === username)
+								{
+									user = item;
+									i = res.data.users.length;
+								}
+							}
+							if(user && user.pass === pass)
+							{
+								_self.loggedIn = true;
+								var profile;
+								_self.pickPic(_self.setProfile, username);
+							}
+							else
+							{
+								$window.alert("Invalid username/password.  Please create an account if you'd like");
+							}
+
 						});
 					//Any one can log in at the moment
 					//try and get the username from server, if it is null print an alert
 					//if(userName === "pwilliams")
 					//{
 						//if(pass === "dl546d")
-						//{
-							_self.loggedIn = true;
-							var profile;
-							_self.pickPic(this.setProfile, userName);
-
 						//}
 					//}
 				}
