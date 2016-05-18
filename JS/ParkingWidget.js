@@ -86,9 +86,11 @@
 								if(item.username === username)
 								{
 									user = item;
+									//Break ze loop BREAK IT
 									i = res.data.users.length;
 								}
 							}
+							//Actual verification process
 							if(user && user.pass === pass)
 							{
 								_self.loggedIn = true;
@@ -101,13 +103,6 @@
 							}
 
 						});
-					//Any one can log in at the moment
-					//try and get the username from server, if it is null print an alert
-					//if(userName === "pwilliams")
-					//{
-						//if(pass === "dl546d")
-						//}
-					//}
 				}
 				
 				this.signOut = function()
